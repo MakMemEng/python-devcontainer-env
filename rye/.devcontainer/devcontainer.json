@@ -1,0 +1,42 @@
+{
+    "name": "docker-rye-python", // コンテナ表示名
+    "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+    "service": "app",
+    "workspaceFolder": "/workspace",
+    "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
+    "userEnvProbe": "loginInteractiveShell",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // コンテナ内でインストールするVS Codeの拡張機能ID
+                "ms-python.python",
+                "charliermarsh.ruff",
+                "KevinRose.vsc-python-indent",
+                "njpwerner.autodocstring",
+                "seatonjiang.gitmoji-vscode",
+                "bungcip.better-toml",
+                "usernamehw.errorlens"
+            ],
+            "settings": {
+                // コンテナ内に追加するVS Codeの設定
+                "python.linting.pylintEnabled": false,
+                "python.linting.flake8Enabled": true,
+                "editor.formatOnSave": true,
+                "[python]": {
+                    "editor.formatOnPaste": true,
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": true
+                    }
+                },
+                "python.linting.flake8Args": ["--max-line-length=150"],
+                "eslint.workingDirectories": [{ "mode": "auto" }],
+                "cfnLint.path": "/home/jmc-dev/.pyenv/shims/cfn-lint"
+            }
+        }
+    },
+
+    "shutdownAction": "stopCompose"
+}
