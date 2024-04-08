@@ -1,0 +1,53 @@
+{
+    // Doc: https://tech.dentsusoken.com/entry/2023/05/02/Dev_Container%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%83%90%E3%82%A4%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%A7%E4%BD%9C%E3%82%8BPython%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1
+    "name": "devcontainer-python",
+    // https://github.com/microsoft/vscode-dev-containers/tree/main/containers/python-3
+    "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
+    "containerEnv": {
+        "TZ": "Asia/Tokyo"
+    },
+    "runArgs": ["--init"],
+    "features": {
+        "ghcr.io/devcontainers-contrib/features/poetry:2": {}
+    },
+    "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+    "mounts": [
+        "source=venv-${devcontainerId},target=${containerWorkspaceFolder}/.venv,type=volume"
+    ],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.renderWhitespace": "all",
+                "python.defaultInterpreterPath": ".venv/bin/python",
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": true,
+                        "source.organizeImports": true
+                    }
+                },
+                "[json][jsonc]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": true
+                    }
+                }
+            },
+            "extensions": [
+                "esbenp.prettier-vscode",
+                "ms-python.python",
+                "njpwerner.autodocstring",
+                "KevinRose.vsc-python-indent",
+                "charliermarsh.ruff",
+                "mechatroner.rainbow-csv",
+                "usernamehw.errorlens",
+                "ms-ceintl.vscode-language-pack-ja",
+                "tamasfe.even-better-toml",
+                "github.copilot",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    }
+}

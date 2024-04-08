@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "mymodule"
+version = "0.1.0"
+description = ""
+authors = ["MakMemEng <yatani.mems4568@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 200
