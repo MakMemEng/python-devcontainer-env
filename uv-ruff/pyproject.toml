@@ -1,0 +1,10 @@
+[project]
+name = "mymodule"
+version = "0.1.0"
+description = ""
+authors = []
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ruff",
+]
